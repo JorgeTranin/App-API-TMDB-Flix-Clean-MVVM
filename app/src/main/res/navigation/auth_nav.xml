@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_nav"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.jorge.app_api_tmdb_flix.presentation.auth.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/splashScreeanFragment"
+        android:name="com.jorge.app_api_tmdb_flix.presentation.auth.SplashScreeanFragment"
+        android:label="fragment_splash_screean"
+        tools:layout="@layout/fragment_splash_screean" >
+        <action
+            android:id="@+id/action_splashScreeanFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popUpTo="@id/splashScreeanFragment"
+            app:popUpToInclusive="true"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+</navigation>

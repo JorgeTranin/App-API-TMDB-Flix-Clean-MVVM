@@ -41,6 +41,10 @@ android {
 }
 
 dependencies {
+    // Navigation
+    implementation ("androidx.navigation:navigation-fragment-ktx:2.7.7")
+    implementation ("androidx.navigation:navigation-ui-ktx:2.7.7")
+
     //retrofit
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
@@ -52,6 +56,7 @@ dependencies {
 
     //Hilt
     implementation("com.google.dagger:hilt-android:2.48")
+    implementation("androidx.navigation:navigation-fragment:2.7.7")
     kapt("com.google.dagger:hilt-android-compiler:2.48")
 
     implementation("androidx.core:core-ktx:1.9.0")
