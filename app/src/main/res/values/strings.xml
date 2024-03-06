@@ -8,4 +8,6 @@
     <string name="btn_entrar">Entrar</string>
     <string name="senha">Senha</string>
     <string name="e_mail">E-mail</string>
+    <string name="preencha_o_email">Preencha o email!</string>
+    <string name="preencha_a_senha">Preencha a sua Senha!</string>
 </resources>
