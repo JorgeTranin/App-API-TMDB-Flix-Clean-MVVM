@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.textfield.TextInputLayout
 import com.jorge.app_api_tmdb_flix.R
 import com.jorge.app_api_tmdb_flix.databinding.FragmentLoginBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,30 +37,33 @@ class LoginFragment : Fragment() {
 
     private fun setupListeners() {
         binding.txtNovoCadastro.setOnClickListener {
-
+            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
 
 
         binding.btnLogin.setOnClickListener {
-            binding.tilEmail.helperText = null
-            binding.tilSenha.helperText = null
 
             val email = binding.tieEmail.text.toString()
             val senha = binding.tieSenha.text.toString()
 
             when {
                 email.isEmpty() -> {
-                    binding.tilEmail.helperText = getString(R.string.preencha_o_email)
-                    binding.tilEmail.boxStrokeColor = Color.parseColor("#FF9800")
+                    getErroImputLayout(binding.tilEmail, getString(R.string.preencha_o_email))
                 }
 
                 senha.isEmpty() -> {
-                    binding.tilSenha.helperText = getString(R.string.preencha_a_senha)
-                    binding.tilSenha.boxStrokeColor = Color.parseColor("#FF9800")
+                    getErroImputLayout(binding.tilSenha, getString(R.string.preencha_a_senha))
                 }
             }
         }
     }
+
+    private fun getErroImputLayout(inputLayout: TextInputLayout, msg: String) {
+        inputLayout.helperText = null
+        inputLayout.helperText = msg
+        inputLayout.boxStrokeColor = Color.parseColor("#FF9800")
+    }
+
 
     override fun onDestroy() {
         super.onDestroy()

@@ -10,4 +10,6 @@
     <string name="e_mail">E-mail</string>
     <string name="preencha_o_email">Preencha o email!</string>
     <string name="preencha_a_senha">Preencha a sua Senha!</string>
+    <string name="tudo_pronto_para_assistir">Tudo pronto para \n assistir?</string>
+    <string name="informe_seu_email_para_criar_ou_acessar_sua_conta">Informe seu email para criar ou acessar sua \n conta</string>
 </resources>
