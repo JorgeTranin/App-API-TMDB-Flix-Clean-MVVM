@@ -1,14 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".presentation.auth.register.RegisterFragment">
 
+    <LinearLayout
+        android:id="@+id/container_titles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_marginHorizontal="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/app_name"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_20dp"
+            android:layout_marginTop="@dimen/margin_20dp"
+            android:text="@string/filmes_tmbd_jorge"
+            android:textColor="@color/red"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_ajuda"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_20dp"
+            android:layout_marginTop="@dimen/margin_20dp"
+            android:text="@string/ajuda"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_entrar"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_20dp"
+            android:layout_marginTop="@dimen/margin_20dp"
+            android:text="@string/entrar"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
 
     <TextView
+        android:id="@+id/txt_title"
         style="@style/TextAppearance.AppCompat.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,7 +65,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/text_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_20dp"
@@ -32,30 +76,61 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_email"
-        android:layout_width="match_parent"
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_20dp"
         android:hint="@string/e_mail"
-        app:endIconMode="clear_text"
-        app:helperTextTextColor="@color/red"
-        android:layout_height="wrap_content">
+        app:boxStrokeColor="@color/blue"
+        app:helperTextTextColor="@color/red">
 
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_senha"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_20dp"
+        android:hint="@string/senha"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:boxStrokeColor="@color/blue"
+        app:endIconMode="password_toggle"
+        app:helperTextTextColor="@color/red">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_senha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btn_cadastrar_email"
-        android:layout_margin="@dimen/margin_20dp"
-        android:padding="@dimen/margin_20dp"
-        android:backgroundTint="@color/red"
         style="@style/Widget.MaterialComponents.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Vamos Lá" />
+        android:layout_margin="@dimen/margin_20dp"
+        android:backgroundTint="@color/red"
+        android:padding="@dimen/margin_20dp"
+        android:text="@string/vamos_la" />
+    <Button
+        android:id="@+id/btn_cadastrar_user"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_20dp"
+        android:backgroundTint="@color/red"
+        android:padding="@dimen/margin_20dp"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:text="@string/cadastrar" />
 
 
 </LinearLayout>

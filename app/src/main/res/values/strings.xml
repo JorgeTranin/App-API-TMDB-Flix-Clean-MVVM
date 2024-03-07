@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">App-API-TMDB-Flix</string>
     <string name="filmes_tmbd_jorge">Filmes TMBD Jorge</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="precisa_de_ajuda">Precisa de Ajuda?</string>
     <string name="novo_por_aqui_inscreva_se_agora">Novo por aqui? Inscreva-se Agora</string>
@@ -11,5 +10,9 @@
     <string name="preencha_o_email">Preencha o email!</string>
     <string name="preencha_a_senha">Preencha a sua Senha!</string>
     <string name="tudo_pronto_para_assistir">Tudo pronto para \n assistir?</string>
-    <string name="informe_seu_email_para_criar_ou_acessar_sua_conta">Informe seu email para criar ou acessar sua \n conta</string>
+    <string name="informe_seu_email_para_criar_ou_acessar_sua_conta">Informe seu email para criar ou acessar sua conta</string>
+    <string name="entrar">Entrar</string>
+    <string name="ajuda">Ajuda</string>
+    <string name="vamos_la">Vamos Lá</string>
+    <string name="cadastrar">Cadastrar</string>
 </resources>

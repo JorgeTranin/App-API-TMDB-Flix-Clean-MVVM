@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.google.android.material.textfield.TextInputLayout
 import com.jorge.app_api_tmdb_flix.R
@@ -31,16 +32,28 @@ class RegisterFragment : Fragment() {
 
     private fun setupListeners() {
         binding.btnCadastrarEmail.setOnClickListener {
+            //binding.tilEmail.setHelperTextColor()
             val email = binding.etEmail.text.toString()
             if (email.isEmpty()) {
-
                 getErroImputLayout(binding.tilEmail, getString(R.string.preencha_o_email))
+            }else{
+                setViewVisibiliti()
             }
         }
     }
 
+    private fun setViewVisibiliti() {
+        binding.containerTitles.isVisible = true
+        binding.tilSenha.isVisible = true
+        binding.btnCadastrarUser.isVisible = true
+        binding.btnCadastrarEmail.isVisible = false
+        binding.btnCadastrarEmail.text = "Cadastrar"
+        binding.txtTitle.text = "Um mundo de Séries e filmes espera por você"
+        binding.textInfo.text = "Crie uma conta para saber mais sobre o App"
+    }
+
     private fun getErroImputLayout(inputLayout: TextInputLayout, msg: String) {
-        inputLayout.helperText = null
+
         inputLayout.helperText = msg
         inputLayout.boxStrokeColor = Color.parseColor("#FF0000")
     }
