@@ -1,15 +1,18 @@
 package com.jorge.app_api_tmdb_flix.presentation.auth.login
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputLayout
 import com.jorge.app_api_tmdb_flix.R
 import com.jorge.app_api_tmdb_flix.databinding.FragmentLoginBinding
+import com.jorge.app_api_tmdb_flix.presentation.HomeActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -17,6 +20,7 @@ class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
+    //private val viewModel: LoginViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -53,6 +57,10 @@ class LoginFragment : Fragment() {
 
                 senha.isEmpty() -> {
                     getErroImputLayout(binding.tilSenha, getString(R.string.preencha_a_senha))
+                }
+                else -> {
+                    val intent = Intent(requireContext(), HomeActivity::class.java)
+                    startActivity(intent)
                 }
             }
         }
