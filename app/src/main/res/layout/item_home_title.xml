@@ -2,15 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="10dp"
     android:background="@color/dark_gray"
+    android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools">
+
     <TextView
         android:id="@+id/txt_title_item"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:textStyle="bold"
+        android:layout_margin="@dimen/margin_20dp"
         android:textSize="18sp"
         tools:text="Filmes Populares" />
 
