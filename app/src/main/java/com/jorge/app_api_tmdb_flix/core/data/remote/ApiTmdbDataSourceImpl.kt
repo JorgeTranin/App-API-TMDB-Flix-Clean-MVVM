@@ -1,10 +1,9 @@
 package com.jorge.app_api_tmdb_flix.core.data.remote
 
 import com.jorge.app_api_tmdb_flix.core.data.remote.api.ApiTmdb
-import com.jorge.app_api_tmdb_flix.core.data.remote.response.toFilmePopularModel
+import com.jorge.app_api_tmdb_flix.core.data.remote.response.toFilmePopularModelHorizontal
+import com.jorge.app_api_tmdb_flix.core.data.remote.response.toFilmePopularModelVertical
 import com.jorge.app_api_tmdb_flix.core.domain.model.HeaderItem
-import com.jorge.app_api_tmdb_flix.core.domain.model.MovieItem
-import com.jorge.app_api_tmdb_flix.core.domain.model.MoviePopular
 import javax.inject.Inject
 
 class ApiTmdbDataSourceImpl @Inject constructor(
@@ -16,7 +15,7 @@ class ApiTmdbDataSourceImpl @Inject constructor(
         return if (filmes.isSuccessful) {
             HeaderItem(
                 "Populares",
-                filmes.body()?.results?.mapTo(mutableListOf()) { it.toFilmePopularModel() } ?: mutableListOf()
+                filmes.body()?.results?.mapTo(mutableListOf()) { it.toFilmePopularModelVertical() } ?: mutableListOf()
             )
         } else {
             HeaderItem()

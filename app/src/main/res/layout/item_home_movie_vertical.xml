@@ -12,12 +12,12 @@
         android:layout_height="wrap_content"
         android:background="@color/dark_gray"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:paddingStart="10dp">
 
         <ImageView
             android:id="@+id/iv_card_filme"
-            android:layout_width="130dp"
-            android:layout_height="160dp"
+            android:layout_width="160dp"
+            android:layout_height="230dp"
             tools:srcCompat="@tools:sample/avatars" />
 
     </LinearLayout>

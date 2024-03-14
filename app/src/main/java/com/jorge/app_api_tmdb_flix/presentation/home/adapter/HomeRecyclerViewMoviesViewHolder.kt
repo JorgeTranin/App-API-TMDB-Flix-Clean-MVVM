@@ -18,6 +18,7 @@ sealed class HomeRecyclerViewMoviesViewHolder(binding: ViewBinding) :
 
             Glide.with(binding.ivCardFilme)
                 .load(cabecalho.image)
+                .centerCrop()
                 .into(binding.ivCardFilme)
 
         }
