@@ -3,9 +3,11 @@ package com.jorge.app_api_tmdb_flix.presentation.home.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.jorge.app_api_tmdb_flix.core.domain.model.HeaderItem
+import com.jorge.app_api_tmdb_flix.core.domain.model.MovieItem
 import com.jorge.app_api_tmdb_flix.databinding.ItemHomeTitleBinding
 
 class HomeAdapter : ListAdapter<HeaderItem, HomeAdapter.HomeViewHolder>(DiffCallback()) {
@@ -15,7 +17,6 @@ class HomeAdapter : ListAdapter<HeaderItem, HomeAdapter.HomeViewHolder>(DiffCall
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemHomeTitleBinding.inflate(inflater, parent, false)
-
         return HomeViewHolder(binding)
     }
 
@@ -33,8 +34,16 @@ class HomeAdapter : ListAdapter<HeaderItem, HomeAdapter.HomeViewHolder>(DiffCall
                         }
 
              */
+
+            val list : MutableList<MovieItem> = mutableListOf()
+            headerItem.movieItem.forEach{
+                list.add(it)
+            }
+
             binding.run {
                 txtTitleItem.text = headerItem.title
+                rvFilmes.setHasFixedSize(true)
+                rvFilmes.adapter = HomeAdapterMovies(list)
             }
 
         }

@@ -55,18 +55,31 @@ class HomeFragment : Fragment() {
 
     private fun getTitles(): MutableList<HeaderItem> {
         return mutableListOf(
-            HeaderItem("title"),
-            HeaderItem("title"),
-            HeaderItem("title")
+            HeaderItem("title", getMovies()),
+            HeaderItem("title", getMoviesHorizontal())
         )
+
     }
 
-    private fun getMovies(): List<MovieItem> {
-        return listOf(
-            MovieItem("https://www.themoviedb.org/t/p/w1280/opifTi4YVvqMJkDpMCi2mjwE77B.jpg"),
-            MovieItem("https://www.themoviedb.org/t/p/w1280/opifTi4YVvqMJkDpMCi2mjwE77B.jpg"),
-            MovieItem("https://www.themoviedb.org/t/p/w1280/opifTi4YVvqMJkDpMCi2mjwE77B.jpg"),
-            MovieItem("https://www.themoviedb.org/t/p/w1280/opifTi4YVvqMJkDpMCi2mjwE77B.jpg"),
+    private fun getMovies(): MutableList<MovieItem> {
+        return mutableListOf(
+            MovieItem.MovieVertical("https://www.themoviedb.org/t/p/w1280/opifTi4YVvqMJkDpMCi2mjwE77B.jpg"),
+            MovieItem.MovieVertical("https://www.themoviedb.org/t/p/w1280/opifTi4YVvqMJkDpMCi2mjwE77B.jpg"),
+            MovieItem.MovieVertical("https://www.themoviedb.org/t/p/w1280/opifTi4YVvqMJkDpMCi2mjwE77B.jpg"),
+            MovieItem.MovieVertical("https://www.themoviedb.org/t/p/w1280/opifTi4YVvqMJkDpMCi2mjwE77B.jpg"),
+            MovieItem.MovieVertical("https://www.themoviedb.org/t/p/w1280/opifTi4YVvqMJkDpMCi2mjwE77B.jpg"),
+            MovieItem.MovieVertical("https://www.themoviedb.org/t/p/w1280/opifTi4YVvqMJkDpMCi2mjwE77B.jpg"),
+        )
+    }
+    private fun getMoviesHorizontal(): MutableList<MovieItem> {
+        return mutableListOf(
+            MovieItem.MovieHorizontal("https://cdn.pixabay.com/photo/2024/02/23/19/37/squirrel-8592682_1280.jpg"),
+            MovieItem.MovieHorizontal("https://cdn.pixabay.com/photo/2024/02/23/19/37/squirrel-8592682_1280.jpg"),
+            MovieItem.MovieHorizontal("https://cdn.pixabay.com/photo/2024/02/23/19/37/squirrel-8592682_1280.jpg"),
+            MovieItem.MovieHorizontal("https://cdn.pixabay.com/photo/2024/02/23/19/37/squirrel-8592682_1280.jpg"),
+            MovieItem.MovieHorizontal("https://cdn.pixabay.com/photo/2024/02/23/19/37/squirrel-8592682_1280.jpg"),
+            MovieItem.MovieHorizontal("https://cdn.pixabay.com/photo/2024/02/23/19/37/squirrel-8592682_1280.jpg"),
+
         )
     }
 
