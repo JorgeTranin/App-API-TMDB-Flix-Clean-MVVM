@@ -36,7 +36,6 @@ class HomeFragment : Fragment() {
         loadData()
     }
 
-
     private fun setReciclerView() {
         binding.rvHome.setHasFixedSize(true)
         binding.rvHome.adapter = homeAdapter
