@@ -12,7 +12,7 @@ class ApiTmdbRepository @Inject constructor(
     private val apiTmbdDataSource: ApiTmdbDataSource
 ) {
 
-    suspend fun getMoviesPopular(): HeaderItem =
+    suspend fun getMoviesPopular(): MutableList<HeaderItem> =
         apiTmbdDataSource.getMoviesPopular()
 
 }

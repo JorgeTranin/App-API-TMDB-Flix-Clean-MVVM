@@ -9,16 +9,17 @@ import javax.inject.Inject
 class ApiTmdbDataSourceImpl @Inject constructor(
     private val apiTMDB: ApiTmdb
 ) : ApiTmdbDataSource {
-    override suspend fun getMoviesPopular(): HeaderItem{
+    override suspend fun getMoviesPopular(): MutableList<HeaderItem>{
         val filmes = apiTMDB.getMoviesPopular()
 
         return if (filmes.isSuccessful) {
-            HeaderItem(
+            val headerItem = HeaderItem(
                 "Populares",
                 filmes.body()?.results?.mapTo(mutableListOf()) { it.toFilmePopularModelVertical() } ?: mutableListOf()
             )
+            mutableListOf (headerItem)
         } else {
-            HeaderItem()
+            mutableListOf()
         }
     }
 }

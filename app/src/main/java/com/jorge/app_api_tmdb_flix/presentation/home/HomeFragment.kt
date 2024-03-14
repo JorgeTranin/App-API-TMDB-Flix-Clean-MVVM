@@ -48,10 +48,7 @@ class HomeFragment : Fragment() {
     }
     private fun viewModelObserver(){
         viewModel.listMoviesPopular.observe(viewLifecycleOwner){ moviesPopular ->
-            val lista = mutableListOf<HeaderItem>(
-                moviesPopular
-            )
-            homeAdapter.submitList(lista)
+            homeAdapter.submitList(moviesPopular)
         }
     }
     private fun getMoviesPopular() {
