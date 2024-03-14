@@ -34,21 +34,29 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setReciclerView()
-        loadData()
+        //loadData()
         getMoviesPopular()
+        viewModelObserver()
 
     }
 
     private fun setReciclerView() {
         binding.rvHome.setHasFixedSize(true)
         binding.rvHome.adapter = homeAdapter
-
         binding.rvHome.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
     }
-
+    private fun viewModelObserver(){
+        viewModel.listMoviesPopular.observe(viewLifecycleOwner){ moviesPopular ->
+            val lista = mutableListOf<HeaderItem>(
+                moviesPopular
+            )
+            homeAdapter.submitList(lista)
+        }
+    }
     private fun getMoviesPopular() {
         viewModel.getMovieesPopularList()
+
     }
 
 

@@ -1,7 +1,7 @@
 package com.jorge.app_api_tmdb_flix.core.data.remote.response
 
 import com.jorge.app_api_tmdb_flix.core.data.remote.api.RetrofitService
-import com.jorge.app_api_tmdb_flix.core.domain.model.MoviePopular
+import com.jorge.app_api_tmdb_flix.core.domain.model.MovieItem
 
 data class MoviePopularResult(
     val adult: Boolean,
@@ -20,9 +20,8 @@ data class MoviePopularResult(
     val vote_count: Int
 )
 
-fun MoviePopularResult.toFilmePopularModel() : MoviePopular{
-    return MoviePopular(
-        name = this.title,
-        movieUrl ="${RetrofitService.BASE_URL_MOVIES_IMAGE}${RetrofitService.SIZE_MOVIE_MEDIUM}${this.backdrop_path}"
+fun MoviePopularResult.toFilmePopularModel(): MovieItem {
+    return MovieItem.MovieHorizontal(
+        "${RetrofitService.BASE_URL_MOVIES_IMAGE}${RetrofitService.SIZE_MOVIE_MEDIUM}${this.backdrop_path}"
     )
 }
