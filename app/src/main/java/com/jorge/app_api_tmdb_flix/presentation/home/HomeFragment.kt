@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jorge.app_api_tmdb_flix.core.domain.model.HeaderItem
-import com.jorge.app_api_tmdb_flix.core.domain.model.Movie
+import com.jorge.app_api_tmdb_flix.core.domain.model.MovieItem
 import com.jorge.app_api_tmdb_flix.databinding.FragmentHomeBinding
 import com.jorge.app_api_tmdb_flix.presentation.home.adapter.HomeAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -61,12 +61,12 @@ class HomeFragment : Fragment() {
         )
     }
 
-    private fun getMovies(): List<Movie> {
+    private fun getMovies(): List<MovieItem> {
         return listOf(
-            Movie("https://www.themoviedb.org/t/p/w1280/opifTi4YVvqMJkDpMCi2mjwE77B.jpg"),
-            Movie("https://www.themoviedb.org/t/p/w1280/opifTi4YVvqMJkDpMCi2mjwE77B.jpg"),
-            Movie("https://www.themoviedb.org/t/p/w1280/opifTi4YVvqMJkDpMCi2mjwE77B.jpg"),
-            Movie("https://www.themoviedb.org/t/p/w1280/opifTi4YVvqMJkDpMCi2mjwE77B.jpg"),
+            MovieItem("https://www.themoviedb.org/t/p/w1280/opifTi4YVvqMJkDpMCi2mjwE77B.jpg"),
+            MovieItem("https://www.themoviedb.org/t/p/w1280/opifTi4YVvqMJkDpMCi2mjwE77B.jpg"),
+            MovieItem("https://www.themoviedb.org/t/p/w1280/opifTi4YVvqMJkDpMCi2mjwE77B.jpg"),
+            MovieItem("https://www.themoviedb.org/t/p/w1280/opifTi4YVvqMJkDpMCi2mjwE77B.jpg"),
         )
     }
 
