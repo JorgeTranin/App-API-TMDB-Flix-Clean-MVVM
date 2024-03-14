@@ -1,5 +1,6 @@
 package com.jorge.app_api_tmdb_flix.core.domain.model
 
-class MoviePopular {
-
-}
+data class MoviePopular (
+    val name: String?  = "",
+    val movieUrl: String? = ""
+)

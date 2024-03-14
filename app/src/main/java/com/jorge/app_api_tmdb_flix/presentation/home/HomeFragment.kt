@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jorge.app_api_tmdb_flix.core.domain.model.HeaderItem
 import com.jorge.app_api_tmdb_flix.core.domain.model.MovieItem
@@ -17,7 +18,7 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-
+    private val viewModel: HomeViewModel by viewModels()
 
     private var homeAdapter: HomeAdapter = HomeAdapter()
 
@@ -34,6 +35,8 @@ class HomeFragment : Fragment() {
 
         setReciclerView()
         loadData()
+        getMoviesPopular()
+
     }
 
     private fun setReciclerView() {
@@ -42,6 +45,10 @@ class HomeFragment : Fragment() {
 
         binding.rvHome.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+    }
+
+    private fun getMoviesPopular() {
+        viewModel.getMovieesPopularList()
     }
 
 
@@ -70,6 +77,7 @@ class HomeFragment : Fragment() {
             MovieItem.MovieVertical("https://www.themoviedb.org/t/p/w1280/opifTi4YVvqMJkDpMCi2mjwE77B.jpg"),
         )
     }
+
     private fun getMoviesHorizontal(): MutableList<MovieItem> {
         return mutableListOf(
             MovieItem.MovieHorizontal("https://cdn.pixabay.com/photo/2024/02/23/19/37/squirrel-8592682_1280.jpg"),
@@ -79,7 +87,7 @@ class HomeFragment : Fragment() {
             MovieItem.MovieHorizontal("https://cdn.pixabay.com/photo/2024/02/23/19/37/squirrel-8592682_1280.jpg"),
             MovieItem.MovieHorizontal("https://cdn.pixabay.com/photo/2024/02/23/19/37/squirrel-8592682_1280.jpg"),
 
-        )
+            )
     }
 
 
