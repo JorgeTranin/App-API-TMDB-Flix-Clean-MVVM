@@ -18,4 +18,15 @@ class ApiTmdbDataSourceImpl @Inject constructor(
             mutableListOf()
         }
     }
+
+    override suspend fun getMoviesNowPlaying(): MutableList<MoviePopular> {
+        val responseFilmesNowPlaying = apiTMDB.getMovieesnowPlaying()
+
+        return if (responseFilmesNowPlaying.isSuccessful) {
+            val filmesFilmesNowPlaying = responseFilmesNowPlaying.body()?.results?.mapTo(mutableListOf()) { it.toFilmePopularModel() } ?: mutableListOf()
+            filmesFilmesNowPlaying
+        } else {
+            mutableListOf()
+        }
+    }
 }

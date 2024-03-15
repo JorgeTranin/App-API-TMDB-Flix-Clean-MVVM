@@ -23,6 +23,7 @@ data class MoviePopularResult(
 
 fun MoviePopularResult.toFilmePopularModel():  MoviePopular {
     return MoviePopular(
+        id = this.id,
         name = this.title,
         movieUrl = "${BASE_URL_MOVIES_IMAGE}${SIZE_MOVIE_MEDIUM}${this.backdrop_path}"
     )

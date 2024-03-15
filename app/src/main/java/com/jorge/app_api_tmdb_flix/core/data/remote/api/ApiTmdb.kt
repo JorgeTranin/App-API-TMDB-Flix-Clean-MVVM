@@ -8,4 +8,7 @@ interface ApiTmdb {
 
     @GET("movie/popular")
     suspend fun getMoviesPopular() : Response<MoviesPopularResponse>
+
+    @GET("movie/top_rated")
+    suspend fun getMovieesnowPlaying(): Response<MoviesPopularResponse>
 }

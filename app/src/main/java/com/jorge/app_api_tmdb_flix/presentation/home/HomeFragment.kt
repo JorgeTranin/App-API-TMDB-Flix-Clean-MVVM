@@ -21,7 +21,8 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: HomeViewModel by viewModels()
 
-    private lateinit var homeAdapter: HomeAdapterMovie
+    private lateinit var homeAdapterPopular: HomeAdapterMovie
+    private lateinit var homeAdapterNowPlaying: HomeAdapterMovie
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,29 +36,48 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setReciclerView()
+        setReciclerViewNowPlaying()
         viewModelObserver()
         getMoviesPopular()
+        getMoviesNowPlaying()
 
     }
 
     private fun setReciclerView() {
-        homeAdapter = HomeAdapterMovie({
-            Toast.makeText(requireContext(), "Show ${it.name}", Toast.LENGTH_LONG).show()
+        homeAdapterPopular = HomeAdapterMovie({
+            Toast.makeText(requireContext(), "Show ${it.id}", Toast.LENGTH_LONG).show()
         })
         binding.rvHome.setHasFixedSize(true)
-        binding.rvHome.adapter = homeAdapter
+        binding.rvHome.adapter = homeAdapterPopular
+    }
 
+    private fun setReciclerViewNowPlaying() {
+        homeAdapterNowPlaying = HomeAdapterMovie({
+            Toast.makeText(requireContext(), "Show ${it.id}", Toast.LENGTH_LONG).show()
+        })
+        binding.rvHomeNowPlaying.setHasFixedSize(true)
+        binding.rvHomeNowPlaying.adapter = homeAdapterNowPlaying
     }
 
     private fun viewModelObserver() {
         viewModel.listMoviesPopular.observe(viewLifecycleOwner) { moviesPopular ->
-            homeAdapter.submitList(moviesPopular)
+            homeAdapterPopular.submitList(moviesPopular)
+        }
+        viewModel.listMoviesNowPlaying.observe(viewLifecycleOwner) { listMoviesNowPlaying ->
+            homeAdapterNowPlaying.submitList(listMoviesNowPlaying)
         }
     }
 
     private fun getMoviesPopular() {
         CoroutineScope(Dispatchers.IO).launch {
             viewModel.getMovieesPopularList()
+        }
+
+    }
+
+    private fun getMoviesNowPlaying() {
+        CoroutineScope(Dispatchers.IO).launch {
+            viewModel.getMovieesNowPlayingList()
         }
 
     }

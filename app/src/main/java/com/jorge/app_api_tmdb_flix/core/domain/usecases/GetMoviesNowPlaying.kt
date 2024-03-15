@@ -4,16 +4,16 @@ import com.jorge.app_api_tmdb_flix.core.data.repository.ApiTmdbRepository
 import com.jorge.app_api_tmdb_flix.core.domain.model.MoviePopular
 import javax.inject.Inject
 
-interface GetMoviesPopular {
+interface GetMoviesNowPlaying {
     suspend operator fun invoke(): MutableList<MoviePopular>
 }
 
-class GetMoviesPopularImpl @Inject constructor(
+class GetMoviesNowPlayingImpl @Inject constructor(
     private val repository: ApiTmdbRepository
-) : GetMoviesPopular {
+) : GetMoviesNowPlaying {
     override suspend fun invoke(): MutableList<MoviePopular> {
         try {
-            return repository.getMoviesPopular()
+            return repository.getFilmesNowPlaying()
 
         } catch (e: Exception) {
             throw e

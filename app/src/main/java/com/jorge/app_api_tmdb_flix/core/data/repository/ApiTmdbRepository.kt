@@ -11,4 +11,6 @@ class ApiTmdbRepository @Inject constructor(
     suspend fun getMoviesPopular(): MutableList<MoviePopular> =
         apiTmbdDataSource.getMoviesPopular()
 
+    suspend fun getFilmesNowPlaying(): MutableList<MoviePopular> = apiTmbdDataSource.getMoviesNowPlaying()
+
 }
