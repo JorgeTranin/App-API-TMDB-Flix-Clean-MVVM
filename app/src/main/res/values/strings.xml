@@ -22,4 +22,6 @@
     <string name="sair">Sair</string>
     <string name="filmes_populares">Filmes Populares</string>
     <string name="passando_agora">Passando Agora</string>
+    <string name="assistir_agora">Assistir</string>
+    <string name="info">Saiba Mais</string>
 </resources>
