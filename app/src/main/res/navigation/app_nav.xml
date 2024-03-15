@@ -13,8 +13,7 @@
         <action
             android:id="@+id/action_homeFragment_to_movieDetailsFragment"
             app:destination="@id/movieDetailsFragment"
-            app:popEnterAnim="@android:anim/accelerate_decelerate_interpolator" />
-
+            app:exitAnim="@android:anim/fade_out" />
 
 
     </fragment>
@@ -22,6 +21,5 @@
         android:id="@+id/movieDetailsFragment"
         android:name="com.jorge.app_api_tmdb_flix.presentation.movieDetails.MovieDetailsFragment"
         android:label="fragment_movie_details"
-        tools:layout="@layout/fragment_movie_details">
-    </fragment>
+        tools:layout="@layout/fragment_movie_details"/>
 </navigation>

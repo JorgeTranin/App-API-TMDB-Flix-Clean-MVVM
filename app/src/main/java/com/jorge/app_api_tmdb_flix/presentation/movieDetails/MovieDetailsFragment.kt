@@ -5,13 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.Glide
 import com.jorge.app_api_tmdb_flix.R
 import com.jorge.app_api_tmdb_flix.databinding.FragmentMovieDetailsBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 
+@AndroidEntryPoint
 class MovieDetailsFragment : Fragment() {
     private var _binding: FragmentMovieDetailsBinding? = null
     private val binding: FragmentMovieDetailsBinding get() = _binding!!
+
+    private val viewModel: MovieDetailsViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,9 +33,29 @@ class MovieDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val bundle = arguments
-        val data = bundle?.getInt("movieID")
+        val id = bundle?.getInt("movieID")
 
-        binding.txtTitleMovie.text = data.toString()
+        vmObserver()
+        if (id != null){
+            getMovieDetails(id)
+        }
+
+
+    }
+
+    private fun vmObserver(){
+        viewModel.movie.observe(viewLifecycleOwner){movie ->
+            Glide.with(binding.ivMovie).load(movie.urlImage).into(binding.ivMovie)
+            binding.txtTitleMovie.text = movie.title
+            binding.txtDescription.text = movie.overview
+
+        }
+    }
+    private fun getMovieDetails(id: Int) {
+        lifecycleScope.launch {
+            viewModel.getMovieDetailsVM(id)
+        }
+
     }
 
     override fun onDestroy() {
