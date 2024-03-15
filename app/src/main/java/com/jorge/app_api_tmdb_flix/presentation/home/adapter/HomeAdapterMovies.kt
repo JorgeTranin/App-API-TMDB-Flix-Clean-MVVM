@@ -3,17 +3,23 @@ package com.jorge.app_api_tmdb_flix.presentation.home.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.jorge.app_api_tmdb_flix.core.domain.model.HeaderItem
 import com.jorge.app_api_tmdb_flix.core.domain.model.MovieItem
 import com.jorge.app_api_tmdb_flix.databinding.ItemHomeMovieHorizontalBinding
 import com.jorge.app_api_tmdb_flix.databinding.ItemHomeMovieVerticalBinding
 
 
-class HomeAdapterMovies(private val listMovies: MutableList<MovieItem>) :
+class HomeAdapterMovies(
+    private val listMovies: MutableList<MovieItem>,
+    private val onClickVertical: (MovieItem.MovieVertical) -> Unit,
+    private val onClickHorizontal: (MovieItem.MovieHorizontal) -> Unit
+) :
     RecyclerView.Adapter<HomeRecyclerViewMoviesViewHolder>() {
+
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
-        viewType: Int
+        viewType: Int,
     ): HomeRecyclerViewMoviesViewHolder =
         when (viewType) {
             TIPO_HORIZONTAL -> HomeRecyclerViewMoviesViewHolder.MovieHorizontalViewHolder(
@@ -21,7 +27,8 @@ class HomeAdapterMovies(private val listMovies: MutableList<MovieItem>) :
                     LayoutInflater.from(parent.context),
                     parent,
                     false
-                )
+                ),
+                onClickHorizontal
             )
 
             TIPO_VERTICAL -> HomeRecyclerViewMoviesViewHolder.MovieVerticalViewHolder(
@@ -29,7 +36,8 @@ class HomeAdapterMovies(private val listMovies: MutableList<MovieItem>) :
                     LayoutInflater.from(parent.context),
                     parent,
                     false
-                )
+                ),
+                onClickVertical
             )
 
             else -> throw IllegalArgumentException("Tipo de View Inválido")

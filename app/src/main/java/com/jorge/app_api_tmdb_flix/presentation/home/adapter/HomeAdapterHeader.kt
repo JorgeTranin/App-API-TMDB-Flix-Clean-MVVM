@@ -3,16 +3,13 @@ package com.jorge.app_api_tmdb_flix.presentation.home.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.jorge.app_api_tmdb_flix.core.domain.model.HeaderItem
 import com.jorge.app_api_tmdb_flix.core.domain.model.MovieItem
 import com.jorge.app_api_tmdb_flix.databinding.ItemHomeTitleBinding
 
-class HomeAdapter : ListAdapter<HeaderItem, HomeAdapter.HomeViewHolder>(DiffCallback()) {
-
-    //var listenerVisitante: (HeaderItem) -> Unit = {}
+class HomeAdapter() : ListAdapter<HeaderItem, HomeAdapter.HomeViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -25,25 +22,12 @@ class HomeAdapter : ListAdapter<HeaderItem, HomeAdapter.HomeViewHolder>(DiffCall
     }
 
     inner class HomeViewHolder(
-        private val binding: ItemHomeTitleBinding
+        private val binding: ItemHomeTitleBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(headerItem: HeaderItem) {
-            /*
-                        binding.cardVisitante.setOnClickListener {
-                            listenerVisitante(visitante)
-                        }
-
-             */
-
-            val list : MutableList<MovieItem> = mutableListOf()
-            headerItem.movieItem.forEach{
-                list.add(it)
-            }
 
             binding.run {
                 txtTitleItem.text = headerItem.title
-                rvFilmes.setHasFixedSize(true)
-                rvFilmes.adapter = HomeAdapterMovies(list)
             }
 
         }

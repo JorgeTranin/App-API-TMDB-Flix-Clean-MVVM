@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,7 +21,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: HomeViewModel by viewModels()
 
-    private var homeAdapter: HomeAdapter = HomeAdapter()
+    private lateinit var homeAdapter: HomeAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,8 +42,12 @@ class HomeFragment : Fragment() {
     }
 
     private fun setReciclerView() {
+        homeAdapter = HomeAdapter( {
+            Toast.makeText(requireContext(), "Show $it", Toast.LENGTH_LONG).show()
+        })
         binding.rvHome.setHasFixedSize(true)
         binding.rvHome.adapter = homeAdapter
+
         binding.rvHome.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
     }
