@@ -73,13 +73,21 @@
         android:background="@color/dark_gray"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:layout_margin="@dimen/margin_20dp"
+            android:text="@string/filmes_populares"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_home"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="130dp"
+            android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_home_title" />
+            tools:listitem="@layout/item_home_movie_horizontal" />
 
     </LinearLayout>
 </LinearLayout>

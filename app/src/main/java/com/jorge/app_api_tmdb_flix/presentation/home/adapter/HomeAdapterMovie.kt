@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.jorge.app_api_tmdb_flix.core.domain.model.MoviePopular
-import com.jorge.app_api_tmdb_flix.databinding.ItemHomeMovieVerticalBinding
+import com.jorge.app_api_tmdb_flix.databinding.ItemHomeMovieHorizontalBinding
 
 class HomeAdapterMovie(
     private val onClickMovie: (MoviePopular) -> Unit
@@ -15,7 +15,7 @@ class HomeAdapterMovie(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeAdapterMoviesViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val binding = ItemHomeMovieVerticalBinding.inflate(inflater, parent, false)
+        val binding = ItemHomeMovieHorizontalBinding.inflate(inflater, parent, false)
         return HomeAdapterMoviesViewHolder(binding)
     }
 
@@ -24,7 +24,7 @@ class HomeAdapterMovie(
     }
 
     inner class HomeAdapterMoviesViewHolder(
-        private val binding: ItemHomeMovieVerticalBinding,
+        private val binding: ItemHomeMovieHorizontalBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: MoviePopular) {
 
@@ -33,7 +33,7 @@ class HomeAdapterMovie(
                     .load(item.movieUrl)
                     .into(ivCardFilme)
 
-                clickMovieVertical.setOnClickListener {
+                clickMovieHorizontal.setOnClickListener {
                     onClickMovie(item)
                 }
 

@@ -8,13 +8,13 @@ import retrofit2.Response
 import javax.inject.Inject
 
 interface GetMoviesPopular {
-    suspend operator fun invoke(): MutableList<HeaderItem>
+    suspend operator fun invoke(): MutableList<MoviePopular>
 }
 
 class GetMoviesPopularImpl @Inject constructor(
     private val repository: ApiTmdbRepository
 ) : GetMoviesPopular {
-    override suspend fun invoke(): MutableList<HeaderItem> {
+    override suspend fun invoke(): MutableList<MoviePopular> {
         try {
             return repository.getMoviesPopular()
 

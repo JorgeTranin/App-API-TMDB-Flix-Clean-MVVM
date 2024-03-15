@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.jorge.app_api_tmdb_flix.core.domain.model.HeaderItem
-import com.jorge.app_api_tmdb_flix.core.domain.model.MovieItem
 import com.jorge.app_api_tmdb_flix.databinding.FragmentHomeBinding
-import com.jorge.app_api_tmdb_flix.presentation.home.adapter.HomeAdapter
+import com.jorge.app_api_tmdb_flix.presentation.home.adapter.HomeAdapterMovie
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -21,7 +21,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: HomeViewModel by viewModels()
 
-    private lateinit var homeAdapter: HomeAdapter
+    private lateinit var homeAdapter: HomeAdapterMovie
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,69 +35,31 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setReciclerView()
-        //loadData()
-        getMoviesPopular()
         viewModelObserver()
+        getMoviesPopular()
 
     }
 
     private fun setReciclerView() {
-        homeAdapter = HomeAdapter( {
-            Toast.makeText(requireContext(), "Show $it", Toast.LENGTH_LONG).show()
+        homeAdapter = HomeAdapterMovie({
+            Toast.makeText(requireContext(), "Show ${it.name}", Toast.LENGTH_LONG).show()
         })
         binding.rvHome.setHasFixedSize(true)
         binding.rvHome.adapter = homeAdapter
 
-        binding.rvHome.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
     }
-    private fun viewModelObserver(){
-        viewModel.listMoviesPopular.observe(viewLifecycleOwner){ moviesPopular ->
+
+    private fun viewModelObserver() {
+        viewModel.listMoviesPopular.observe(viewLifecycleOwner) { moviesPopular ->
             homeAdapter.submitList(moviesPopular)
         }
     }
+
     private fun getMoviesPopular() {
-        viewModel.getMovieesPopularList()
+        CoroutineScope(Dispatchers.IO).launch {
+            viewModel.getMovieesPopularList()
+        }
 
-    }
-
-
-    private fun loadData() {
-        val headerMovies = getTitles()
-        val popularMovies = getMovies()
-        homeAdapter.submitList(headerMovies)
-
-    }
-
-    private fun getTitles(): MutableList<HeaderItem> {
-        return mutableListOf(
-            HeaderItem("title", getMovies()),
-            HeaderItem("title", getMoviesHorizontal())
-        )
-
-    }
-
-    private fun getMovies(): MutableList<MovieItem> {
-        return mutableListOf(
-            MovieItem.MovieVertical("https://www.themoviedb.org/t/p/w1280/opifTi4YVvqMJkDpMCi2mjwE77B.jpg"),
-            MovieItem.MovieVertical("https://www.themoviedb.org/t/p/w1280/opifTi4YVvqMJkDpMCi2mjwE77B.jpg"),
-            MovieItem.MovieVertical("https://www.themoviedb.org/t/p/w1280/opifTi4YVvqMJkDpMCi2mjwE77B.jpg"),
-            MovieItem.MovieVertical("https://www.themoviedb.org/t/p/w1280/opifTi4YVvqMJkDpMCi2mjwE77B.jpg"),
-            MovieItem.MovieVertical("https://www.themoviedb.org/t/p/w1280/opifTi4YVvqMJkDpMCi2mjwE77B.jpg"),
-            MovieItem.MovieVertical("https://www.themoviedb.org/t/p/w1280/opifTi4YVvqMJkDpMCi2mjwE77B.jpg"),
-        )
-    }
-
-    private fun getMoviesHorizontal(): MutableList<MovieItem> {
-        return mutableListOf(
-            MovieItem.MovieHorizontal("https://cdn.pixabay.com/photo/2024/02/23/19/37/squirrel-8592682_1280.jpg"),
-            MovieItem.MovieHorizontal("https://cdn.pixabay.com/photo/2024/02/23/19/37/squirrel-8592682_1280.jpg"),
-            MovieItem.MovieHorizontal("https://cdn.pixabay.com/photo/2024/02/23/19/37/squirrel-8592682_1280.jpg"),
-            MovieItem.MovieHorizontal("https://cdn.pixabay.com/photo/2024/02/23/19/37/squirrel-8592682_1280.jpg"),
-            MovieItem.MovieHorizontal("https://cdn.pixabay.com/photo/2024/02/23/19/37/squirrel-8592682_1280.jpg"),
-            MovieItem.MovieHorizontal("https://cdn.pixabay.com/photo/2024/02/23/19/37/squirrel-8592682_1280.jpg"),
-
-            )
     }
 
 
