@@ -2,6 +2,8 @@ package com.jorge.app_api_tmdb_flix.core.data.remote
 
 import com.jorge.app_api_tmdb_flix.core.data.remote.api.ApiTmdb
 import com.jorge.app_api_tmdb_flix.core.data.remote.response.toFilmePopularModel
+import com.jorge.app_api_tmdb_flix.core.data.remote.response.toMovieDetailsModel
+import com.jorge.app_api_tmdb_flix.core.domain.model.MovieDetails
 import com.jorge.app_api_tmdb_flix.core.domain.model.MoviePopular
 import javax.inject.Inject
 
@@ -27,6 +29,17 @@ class ApiTmdbDataSourceImpl @Inject constructor(
             filmesFilmesNowPlaying
         } else {
             mutableListOf()
+        }
+    }
+
+    override suspend fun getMoviesDetails(id: Int): MovieDetails {
+        val responseFilmesDetails = apiTMDB.getMovieDetails(id)
+
+        return if (responseFilmesDetails.isSuccessful) {
+            val filmeDetails = responseFilmesDetails.body()?.toMovieDetailsModel() ?: MovieDetails()
+            filmeDetails
+        } else {
+            MovieDetails()
         }
     }
 }

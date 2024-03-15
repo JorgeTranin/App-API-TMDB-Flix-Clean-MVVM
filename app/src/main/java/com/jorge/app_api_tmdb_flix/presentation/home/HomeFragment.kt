@@ -4,9 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.jorge.app_api_tmdb_flix.R
 import com.jorge.app_api_tmdb_flix.databinding.FragmentHomeBinding
 import com.jorge.app_api_tmdb_flix.presentation.home.adapter.HomeAdapterMovie
 import dagger.hilt.android.AndroidEntryPoint
@@ -44,17 +45,21 @@ class HomeFragment : Fragment() {
     }
 
     private fun setReciclerView() {
-        homeAdapterPopular = HomeAdapterMovie({
-            Toast.makeText(requireContext(), "Show ${it.id}", Toast.LENGTH_LONG).show()
-        })
+        homeAdapterPopular = HomeAdapterMovie { moviePopular ->
+            val bundle = Bundle()
+            bundle.putInt("movieID", moviePopular.id)
+            findNavController().navigate(R.id.action_homeFragment_to_movieDetailsFragment, bundle)
+        }
         binding.rvHome.setHasFixedSize(true)
         binding.rvHome.adapter = homeAdapterPopular
     }
 
     private fun setReciclerViewNowPlaying() {
-        homeAdapterNowPlaying = HomeAdapterMovie({
-            Toast.makeText(requireContext(), "Show ${it.id}", Toast.LENGTH_LONG).show()
-        })
+        homeAdapterNowPlaying = HomeAdapterMovie { movie ->
+            val bundle = Bundle()
+            bundle.putInt("movieID", movie.id)
+            findNavController().navigate(R.id.action_homeFragment_to_movieDetailsFragment, bundle)
+        }
         binding.rvHomeNowPlaying.setHasFixedSize(true)
         binding.rvHomeNowPlaying.adapter = homeAdapterNowPlaying
     }

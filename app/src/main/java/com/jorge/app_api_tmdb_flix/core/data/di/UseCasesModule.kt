@@ -1,5 +1,7 @@
 package com.jorge.app_api_tmdb_flix.core.data.di
 
+import com.jorge.app_api_tmdb_flix.core.domain.usecases.GetMovieDetails
+import com.jorge.app_api_tmdb_flix.core.domain.usecases.GetMovieDetailsImpl
 import com.jorge.app_api_tmdb_flix.core.domain.usecases.GetMoviesNowPlaying
 import com.jorge.app_api_tmdb_flix.core.domain.usecases.GetMoviesNowPlayingImpl
 import com.jorge.app_api_tmdb_flix.core.domain.usecases.GetMoviesPopular
@@ -18,4 +20,7 @@ interface UseCasesModule {
 
     @Binds
     fun bindGetMoviesNowPlaying(useCaseImpl: GetMoviesNowPlayingImpl): GetMoviesNowPlaying
+
+    @Binds
+    fun bindGetMovieDetails(useCase: GetMovieDetailsImpl): GetMovieDetails
 }

@@ -9,5 +9,19 @@
         android:id="@+id/homeFragment"
         android:name="com.jorge.app_api_tmdb_flix.presentation.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment"
+            app:popEnterAnim="@android:anim/accelerate_decelerate_interpolator" />
+
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetailsFragment"
+        android:name="com.jorge.app_api_tmdb_flix.presentation.movieDetails.MovieDetailsFragment"
+        android:label="fragment_movie_details"
+        tools:layout="@layout/fragment_movie_details">
+    </fragment>
 </navigation>
